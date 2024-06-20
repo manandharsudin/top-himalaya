@@ -163,3 +163,41 @@ if ( ! function_exists( 'wp_body_open' ) ) :
 		do_action( 'wp_body_open' );
 	}
 endif;
+
+if ( ! function_exists( 'top_himalaya_google_fonts_url' ) ) :	
+/**
+ * Google Fonts url
+ */
+function top_himalaya_google_fonts_url() {
+    $fonts_url = '';
+    $fonts     = array();
+
+    /*
+    * translators: If there are characters in your language that are not supported
+    * by Montserrat, translate this to 'off'. Do not translate into your own language.
+    */
+    if ( 'off' !== _x( 'on', 'Montserrat font: on or off', 'sublime-construction' ) ) {
+        $fonts[] = 'Montserrat:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic';
+    }
+
+    /*
+    * translators: If there are characters in your language that are not supported
+    * by Rubik, translate this to 'off'. Do not translate into your own language.
+    */
+    if ( 'off' !== _x( 'on', 'Rubik font: on or off', 'sublime-construction' ) ) {
+        $fonts[] = 'Rubik:300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic';
+    }
+
+    if ( $fonts ) {
+        $fonts_url = add_query_arg(
+            array(
+                'family'  => urlencode( implode( '|', $fonts ) ),
+                'display' => urlencode( 'swap' ),
+            ),
+            'https://fonts.googleapis.com/css'
+        );
+    }
+
+    return esc_url( $fonts_url );
+}
+endif;
