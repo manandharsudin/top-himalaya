@@ -7,25 +7,24 @@
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package Top_Himalaya
- */
+*/
+?>	
 
-?>
+    <section class="pt-12 md:pt-18 lg:pt-36 pb-11">
+        <div class="container">
+            <div class="flex justify-center flex-col items-center" data-aos="fade-down" data-aos-delay="50" data-aos-duration="1000">
+                <div class="sectiontitle  text-center mb-6">
+                    <h2 class="text-netrual-100 text-2xl sm:text-3xl lg:text-4xl xl:text-[40px] lg:leading-[120%] font-bold">Get Updates from the Himalayas</h2>
+                </div>
+                <div class="flex w-full min:w-full md:min-w-[552px] md:w-auto">
+                    <input type="email" id="email" class="flex-1 outline-none border rounded-none border-r-0 border-neutral-500 text-neutral-800 block w-full py-4 px-6" placeholder="Your Email" required/>
+                    <button type="submit" class="text-white bg-primary hover:bg-secondary font-bold text-sm py-4 px-6 text-center text-sm uppercase leading[120%]" aria-labelledby="Submit">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<?php /*<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'top-himalaya' ) ); ?>">
-				<?php
-				printf( esc_html__( 'Proudly powered by %s', 'top-himalaya' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'top-himalaya' ), 'top-himalaya', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->*/ ?>
-
-    <footer>
+    <footer id="colophon" class="site-footer">
         <div><img src="<?php echo trailingslashit( get_template_directory_uri() );?>assets/images/footer-mountain.png" alt="footer bg"/></div>
         <div class="py-5 bg-footer -mt-1">
             <div class="container">
