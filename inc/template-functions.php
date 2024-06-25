@@ -144,6 +144,26 @@ function top_himalaya_header_menu(){
     }
 }
 
+/**
+ * Search Form
+*/
+function top_himalaya_search_form(){ 
+    $form = '<form role="search" method="get" class="search-form form-groups flex items-center justify-center gap-4 max-w-4xl mx-auto py-8" action="' . esc_url( home_url( '/' ) ) . '">
+                <label class="screen-reader-text">' . esc_html__( 'Looking for Something?', 'blossom-coach' ) . '</label>
+                <input type="search" class="search-field search w-full py-4 px-6 bg-transparent rounded-none border border-neutral-500 outline-none focus:border-primary text-neutral-800" placeholder="Search" value="' . esc_attr( get_search_query() ) . '" name="s" />
+                <label for="submit-field">
+                    <span><i class="fa fa-search"></i></span>
+                    <input type="submit" id="submit-field" class="search-submit" value="'. esc_attr_x( 'Search', 'submit button', 'blossom-coach' ) .'" />
+                </label>
+                <button class="close-popup transition ease-linear duration-100 hover:text-primary hover:scale-110">
+                    <span class="text-xl font-light h-8 w-8">&#x2715;</span>
+                </button>
+            </form>';
+ 
+    return $form;
+}
+add_filter( 'get_search_form', 'top_himalaya_search_form' );
+
 function is_acf_active(){
     return class_exists( 'ACF' ) ? true : false;
 }
