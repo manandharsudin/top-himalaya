@@ -6,7 +6,7 @@ tailwind.config = {
         padding: '1rem',
       },
       backgroundImage: {
-        'parallax-pattern': "url('assets/images/parallaxbg.jpg')",
+        'parallax-pattern': "url('wp-content/themes/top-himalaya/assets/images/parallaxbg.jpg')",
       },
       colors: {
         basewhite: '#FAFAFA',
