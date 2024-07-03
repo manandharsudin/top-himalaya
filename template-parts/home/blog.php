@@ -51,7 +51,8 @@ if( $title || $link || ( $posts && $qry->have_posts() ) ){ ?>
                                         <h3 class="text-2xl font-semibold leading[120%] text-white"><?php the_title(); ?></h3>
                                     </div>
                                 </a>
-                                <?php 
+                                <?php
+                                wp_reset_postdata(); 
                             }
                         ?>
                     </div>
