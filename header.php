@@ -72,3 +72,20 @@
             </div>
         </div>
     </header>
+    
+    <?php 
+    if( ! is_front_page() ){ ?>
+        <section class="breadcrumbWrapper relative">
+            <?php the_post_thumbnail( 'full', array( 'class' => 'w-full h-[600px] object-cover' ) ); ?>
+            <div class="absolute inset-0 w-full h-full bg-black/20"></div>
+            <div class="absolute top-1/2 -translate-y-1/2 w-full mx-auto">
+                <div class="container">
+                    <h1 class="rubik text-4xl md:text-5xl lg:text-[64px] font-bold max-w-4xl text-white">
+                        <?php the_title(); ?>
+                    </h1>
+                </div>
+            </div>
+        </section>
+        <?php 
+    }
+    
