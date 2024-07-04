@@ -9,6 +9,7 @@
  * @package Top_Himalaya
 */
 
+    $newsletter_title   = get_field( 'newsletter_title', 'option' );
     $footer_newsletter  = get_field( 'footer_newsletter', 'option' );
     $footer_logo        = get_field( 'footer_logo', 'option' );
     $footer_content     = get_field( 'footer_content', 'option' );
@@ -27,7 +28,17 @@
         <section class="pt-12 md:pt-18 lg:pt-36 pb-11">
             <div class="container">
                 <div class="flex justify-center flex-col items-center" data-aos="fade-down" data-aos-delay="50" data-aos-duration="1000">
-                    <?php echo do_shortcode( wp_kses_post( $footer_newsletter ) ); ?>
+                    <?php 
+                        if( $newsletter_title ){ ?>
+                            <div class="sectiontitle  text-center mb-6">
+                                <h2 class="text-netrual-100 text-2xl sm:text-3xl lg:text-4xl xl:text-[40px] lg:leading-[120%] font-bold"><?php echo esc_html( $newsletter_title ); ?></h2>
+                            </div>
+                            <?php 
+                        } 
+                    ?>
+                    <div class="flex w-full min:w-full md:min-w-[552px] md:w-auto">
+                        <?php echo do_shortcode( wp_kses_post( $footer_newsletter ) ); ?>
+                    </div>
                 </div>
             </div>
         </section>

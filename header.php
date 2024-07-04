@@ -31,7 +31,7 @@
                     ?>
                     <div class="header-item">
                         <div class="logo">
-                            <a href="index.html" aria-label="Logo Link">
+                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="Logo Link">
                                 <?php 
                                     if( $logo_white ){
                                         echo wp_get_attachment_image( $logo_white['ID'], 'full', false, array( 'class' => 'h-12 sm:h-full logo-white' ) );
