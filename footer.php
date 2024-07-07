@@ -9,6 +9,8 @@
  * @package Top_Himalaya
 */
 
+    do_action( 'top_himalaya_before_footer' );
+
     $newsletter_title   = get_field( 'newsletter_title', 'option' );
     $footer_newsletter  = get_field( 'footer_newsletter', 'option' );
     $footer_logo        = get_field( 'footer_logo', 'option' );

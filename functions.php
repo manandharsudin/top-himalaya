@@ -162,13 +162,18 @@ function top_himalaya_scripts() {
 add_action( 'wp_enqueue_scripts', 'top_himalaya_scripts' );
 
 /**
+ * Custom Post
+*/
+require get_template_directory() . '/inc/cpt.php';
+
+/**
  * Custom template tags for this theme.
- */
+*/
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
- */
+*/
 require get_template_directory() . '/inc/template-functions.php';
 
 if( is_acf_active() ){
