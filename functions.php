@@ -155,6 +155,17 @@ function top_himalaya_scripts() {
     wp_enqueue_script( 'top-himalaya-megamenu', get_template_directory_uri() . '/assets/js/megamenu.js', array(), TOP_HIMALAYA_VERSION, true );
     wp_enqueue_script( 'top-himalaya-main', get_template_directory_uri() . '/assets/js/main.js', array(), TOP_HIMALAYA_VERSION, true );
 
+    $array = [];
+
+    if( is_singular('trip') ){
+        global $post;
+        $array = array(
+            'title' => $post->post_title
+        );
+    }
+
+    wp_localize_script( 'top-himalaya-main', 'th_data', $array );
+
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}

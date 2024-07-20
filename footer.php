@@ -241,15 +241,15 @@
         </div>
     </footer>
 
-    <div id="searchpopup" class="popup w-screen h-screen fixed inset-0 flex bg-gray-900 bg-opacity-50 hidden z-50 overflow-hidden">
-        <div class="w-full popup-content max-h-[110px]">
-            <div class="bg-white">
-                <div class="container">
-                    <?php get_search_form(); ?>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php
+        /**
+         * After Footer
+         * 
+         * @hooked top_himalaya_footer_search - 10
+         * @hooked top_himalaya_inquiry_popup - 15
+        */
+        do_action( 'top_himalaya_after_footer' );
+    ?>    
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

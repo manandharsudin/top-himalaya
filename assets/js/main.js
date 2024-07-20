@@ -533,4 +533,10 @@
 
     AOS.init();
 
+    if( $('body').hasClass('single-trip') ){
+        $(window).on( 'load', function(){
+            $('#popup_trip').val(th_data.title);
+        });
+    }
+
 }( jQuery ) );

@@ -266,3 +266,56 @@ add_action( 'top_himalaya_before_footer', 'top_himalaya_related_trip' );
 function is_acf_active(){
     return class_exists( 'ACF' ) ? true : false;
 }
+
+function top_himalaya_footer_search(){ ?>
+    <div id="searchpopup" class="popup w-screen h-screen fixed inset-0 flex bg-gray-900 bg-opacity-50 hidden z-50 overflow-hidden">
+        <div class="w-full popup-content max-h-[110px]">
+            <div class="bg-white">
+                <div class="container">
+                    <?php get_search_form(); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+add_action( 'top_himalaya_after_footer', 'top_himalaya_footer_search' );
+
+function top_himalaya_inquiry_popup(){
+    if( is_singular( 'trip' ) ){ 
+        global $post;
+        $popup_title     = get_field( 'popup_title', 'option' );
+        $popup_text      = get_field( 'popup_text', 'option' );
+        $popup_shortcode = get_field( 'popup_shortcode', 'option' );
+
+        if( $popup_title || $popup_text || $popup_shortcode ){ ?>
+            <div id="inquirypopup" class="popup w-screen h-screen fixed inset-0 flex bg-gray-900 bg-opacity-50 hidden z-50 overflow-hidden">
+                <div class="w-11/12 md:w-full md:max-w-[660px] flex justify-center items-center popup-content mx-auto">
+                    <div class="w-full bg-white p-10 max-h-screen overflow-auto">
+                        <div class="flex justify-between items-center mb-3">
+                            <?php 
+                                if( $popup_title ){ ?>
+                                    <h2 class="text-3xl md:text-4xl lg:text-[40px] lg:leading-[120%] font-bold text-primary"><?php echo esc_html( $popup_title ); ?></h2>
+                                    <?php 
+                                }
+                            ?>
+                            <button class="close-popup transition ease-linear duration-100 hover:text-primary hover:scale-110"><span class="text-xl font-light h-8 w-8">&#x2715;</span></button>
+                        </div>
+                        <?php 
+                            if( $popup_text ) echo wpautop( wp_kses_post( str_replace( '[title]', $post->post_title, $popup_text ) ) );
+                            
+                            if( $popup_shortcode ){ ?>
+                                <div class="mt-8 grid grid-cols-1 gap-4">
+                                    <?php echo do_shortcode( wp_kses_post( $popup_shortcode ) ); ?>
+                                </div>
+                                <?php
+                            }
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+    }
+}
+add_action( 'top_himalaya_after_footer', 'top_himalaya_inquiry_popup', 15 );
