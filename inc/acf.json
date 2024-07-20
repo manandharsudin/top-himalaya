@@ -3099,6 +3099,24 @@
                 "selected": 0
             },
             {
+                "key": "field_669b3bb580ff8",
+                "label": "Newsletter Section",
+                "name": "",
+                "aria-label": "",
+                "type": "accordion",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "open": 0,
+                "multi_expand": 0,
+                "endpoint": 0
+            },
+            {
                 "key": "field_668610910ac41",
                 "label": "Newsletter Title",
                 "name": "newsletter_title",
@@ -3645,6 +3663,84 @@
                 "open": 0,
                 "multi_expand": 0,
                 "endpoint": 1
+            },
+            {
+                "key": "field_669b3c38aae72",
+                "label": "Inquiry Popup",
+                "name": "",
+                "aria-label": "",
+                "type": "accordion",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "open": 0,
+                "multi_expand": 0,
+                "endpoint": 0
+            },
+            {
+                "key": "field_669b3c4faae73",
+                "label": "Popup Title",
+                "name": "popup_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_669b3c60aae74",
+                "label": "Popup Text",
+                "name": "popup_text",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "Adding [title] will replace with dynamic title.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "rows": 3,
+                "placeholder": "",
+                "new_lines": ""
+            },
+            {
+                "key": "field_669b42ccaae75",
+                "label": "Popup Shortcode",
+                "name": "popup_shortcode",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
             }
         ],
         "location": [
