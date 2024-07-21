@@ -18,26 +18,26 @@ module.exports = function( grunt ) {
                     '!package-lock.json',
                     '!style.css.map',
                 ],
-                dest: 'sublime-business-pro/'
+                dest: 'top-himalaya/'
             }
         },
         compress: {
             main: {
                 options: {
-                    archive: 'sublime_business_pro_' + pkgInfo.version + '.zip',
+                    archive: 'top_himalaya_' + pkgInfo.version + '.zip',
                     mode   : 'zip'
                 },
                 files: [
                     {
                         src: [
-                            './sublime-business-pro/**'
+                            './top-himalaya/**'
                         ]
                     }
                 ]
             }
         },
         clean: {
-            main: ["sublime-business-pro"],
+            main: ["top-himalaya"],
             zip : ["*.zip"]
         },
         bumpup: {
