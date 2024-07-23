@@ -43,7 +43,7 @@ get_header(); ?>
                                 </ul>
                                 <div class="hidden tabbtn lg:flex items-center gap-4">
                                     <button class="openmodelbtn btn btn-white bg-white border border-neutral-200 hover:bg-primary hover:border-primary hover:text-white py-3 px-6 text-sm uppercase leading[120%] font-bold" data-target="#inquirypopup">Inquiry</button>
-                                    <button class="btn btn-primary border border-primary bg-primary hover:bg-white hover:text-primary text-white py-3 px-6 text-sm uppercase leading[120%] font-bold whitespace-nowrap">Book Now</button>
+                                    <a href="<?php echo esc_url( add_query_arg( 'trip_id', get_the_ID(), top_himalaya_get_page_template_url( 'templates/booking.php' ) ) ); ?>" class="btn btn-primary border border-primary bg-primary hover:bg-white hover:text-primary text-white py-3 px-6 text-sm uppercase leading[120%] font-bold whitespace-nowrap">Book Now</a>
                                 </div>
                             </div>
                         </div>

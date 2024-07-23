@@ -26,7 +26,7 @@
     $email              = get_field( 'email', 'option' );
     $phone              = get_field( 'phone', 'option' );
 
-    if( $footer_newsletter && ! is_page_template( array( 'templates/about-detail.php', 'templates/contact-us.php' ) ) ){ ?>
+    if( $footer_newsletter && ! is_page_template( array( 'templates/about-detail.php', 'templates/contact-us.php', 'templates/booking.php' ) ) ){ ?>
         <section class="pt-12 md:pt-18 lg:pt-36 pb-11">
             <div class="container">
                 <div class="flex justify-center flex-col items-center" data-aos="fade-down" data-aos-delay="50" data-aos-duration="1000">

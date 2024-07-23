@@ -146,6 +146,11 @@ function top_himalaya_scripts() {
     wp_enqueue_style( 'top-himalaya-megamenu', get_template_directory_uri() . '/assets/css/megamenu.css', array(), TOP_HIMALAYA_VERSION );    
     wp_enqueue_style( 'top-himalaya-style', get_template_directory_uri() . '/assets/css/main.css', array(), TOP_HIMALAYA_VERSION );
 
+    if( is_page_template( 'templates/booking.php' ) ){
+        wp_enqueue_style( 'top-himalaya-nice-select', get_template_directory_uri() . '/assets/css/nice-select.css', array(), TOP_HIMALAYA_VERSION );
+        wp_enqueue_script( 'top-himalaya-nice-select', get_template_directory_uri() . '/assets/js/jquery.nice-select.js', array(), TOP_HIMALAYA_VERSION, true );
+    }
+
 	wp_enqueue_script( 'tailwind', get_template_directory_uri() . '/assets/js/tailwind.js', array(), TOP_HIMALAYA_VERSION, true );
     wp_enqueue_script( 'tailwind-config', get_template_directory_uri() . '/assets/js/tailwind.config.js', array(), TOP_HIMALAYA_VERSION, true );
 	wp_enqueue_script( 'jquery-ui-touch-punch', get_template_directory_uri() . '/assets/js/jquery.ui.touch-punch.min.js', array( 'jquery', 'jquery-ui-core' ), TOP_HIMALAYA_VERSION, true );
@@ -155,13 +160,13 @@ function top_himalaya_scripts() {
     wp_enqueue_script( 'top-himalaya-megamenu', get_template_directory_uri() . '/assets/js/megamenu.js', array(), TOP_HIMALAYA_VERSION, true );
     wp_enqueue_script( 'top-himalaya-main', get_template_directory_uri() . '/assets/js/main.js', array(), TOP_HIMALAYA_VERSION, true );
 
-    $array = [];
+    $array = array(
+        'ajaxurl' => admin_url( 'admin-ajax.php' )
+    );
 
     if( is_singular('trip') ){
         global $post;
-        $array = array(
-            'title' => $post->post_title
-        );
+        $array['title'] = $post->post_title;
     }
 
     wp_localize_script( 'top-himalaya-main', 'th_data', $array );

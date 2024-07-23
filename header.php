@@ -92,7 +92,15 @@
                             if( is_home() ){
                                 single_post_title();
                             }else{
-                                the_title();
+                                if( is_page_template( 'templates/booking.php' ) ){
+                                    $string = '';
+                                    if( isset( $_GET['trip_id'] ) ){
+                                        $string = ' For ' . get_the_title( $_GET['trip_id'] );
+                                    }
+                                    echo the_title( '', '', false ) . $string;
+                                }else{
+                                    the_title();
+                                }
                             }
                         ?>
                     </h1>

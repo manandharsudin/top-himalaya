@@ -539,4 +539,41 @@
         });
     }
 
+    // Trigger to upload file in booking page.
+    $(document).on('change', '.file-upload', function() {  
+        var $this = $(this);
+        $this.closest('.justify-between').find('.error_msg').addClass('hidden');
+        form_data = new FormData();
+
+        if( $(this).get(0).files.length > 0 ){
+            file_data = $(this).prop('files')[0];
+            form_data.append('file', file_data);
+        }
+
+        form_data.append('action', 'upload_file');
+
+        setTimeout(function(){            
+            $.ajax({
+                url: th_data.ajaxurl,
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                data: form_data,
+                dataType: 'json',
+                beforeSend: function(){
+                    $this.closest('.justify-between').find('.error_msg').removeClass('hidden');
+                    $this.closest('.justify-between').find('.error_msg').html('uploading...');
+                },
+                success: function (response) {
+                    if( response.status == 'success' ){
+                        $this.closest('.justify-between').find('.error_msg').html(response.data);
+                        $this.closest('.justify-between').find('.upload_file').val(response.url);
+                    }else{
+                        $this.closest('.justify-between').find('.error_msg').html(response.error);
+                    }                    
+                }            
+            });
+        }, 500);
+    });
+
 }( jQuery ) );

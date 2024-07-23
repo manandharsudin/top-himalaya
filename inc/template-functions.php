@@ -319,3 +319,88 @@ function top_himalaya_inquiry_popup(){
     }
 }
 add_action( 'top_himalaya_after_footer', 'top_himalaya_inquiry_popup', 15 );
+
+/**
+ * Returns page template url if not found returns home page url
+*/
+function top_himalaya_get_page_template_url( $page_template, $home_url = true ){
+    $url = false;
+    $args = array(
+        'meta_key'   => '_wp_page_template',
+        'meta_value' => $page_template,
+        'post_type'  => 'page',
+        'fields'     => 'ids',
+    );
+    
+    $posts_array = get_posts( $args );
+    if( $home_url ){
+        $url = ( $posts_array ) ? get_permalink( $posts_array[0] ) : get_home_url();
+    }else{
+        $url = ( $posts_array ) ? get_permalink( $posts_array[0] ) : false;
+    }
+    return $url;    
+}
+
+function top_himalaya_wp_handle_upload( $file, $image = false ){
+    $return = false;
+    if( isset( $file ) ){
+        if ( ! function_exists( 'wp_handle_upload' ) ) {
+            require_once( ABSPATH . 'wp-admin/includes/file.php' );
+        }
+        $uploadedfile = $file;
+        $upload_overrides = array(
+            'test_form' => false
+        );
+
+        if( $image ){
+            $upload_overrides['mimes'] = array(
+                'jpg|jpeg|jpe' => 'image/jpeg',
+                'gif'          => 'image/gif',
+                'png'          => 'image/png',
+                'bmp'          => 'image/bmp',
+                'tif|tiff'     => 'image/tiff',
+                'ico'          => 'image/x-icon',
+            );
+        }
+
+        $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
+        if ( $movefile && ! isset( $movefile['error'] ) ) {
+            $return = array(
+                'status' => 'success',
+                'file' => $movefile['file'],
+                'url' => $movefile['url']
+            );
+        } else {
+            $return = array(
+                'status' => 'error',
+                'error' => $movefile['error']
+            );
+        }
+    }
+    
+    return $return;
+}
+
+function top_himalaya_file_upload(){
+
+    if( isset( $_FILES['file'] ) ){
+        $file = top_himalaya_wp_handle_upload( $_FILES['file'] );
+
+        if( $file['status'] == 'success' ){
+            wp_send_json( array(
+                'status' => 'success',
+                'url' => $file['url'],
+                'data' => 'File uploaded successfully.'
+            ));
+        }else{
+            wp_send_json( array(
+                'status' => 'error',
+                'error' => $file['error']
+            ));
+        }
+    }
+
+    wp_die();
+}
+add_action( 'wp_ajax_upload_file', 'top_himalaya_file_upload' );
+add_action( 'wp_ajax_nopriv_upload_file', 'top_himalaya_file_upload' );
