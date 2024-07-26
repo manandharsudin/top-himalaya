@@ -1,0 +1,61 @@
+.booking_admin_page h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 30px;
+}
+
+.booking_admin_page .booking_table table {
+    border-collapse: collapse;
+    width: 80% !important;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.booking_admin_page .booking_table table th,
+.booking_admin_page .booking_table table td {
+    border: 1px solid #f2f2f2;
+    padding: 15px;
+}
+
+.booking_admin_page .booking_table table th {
+    background: #2271b1;
+    color: #fff;
+}
+
+.booking_pagination_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.booking_pagination_wrapper .booking_pagination ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.booking_pagination_wrapper .booking_pagination ul li {
+    margin: 0 3px 0;
+}
+.booking_pagination_wrapper .booking_pagination ul li a,
+.booking_pagination_wrapper a {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+}
+.booking_pagination_wrapper > a {
+    width: auto;
+    padding: 0 10px;
+}
+.booking_pagination_wrapper .booking_pagination ul li a.active,
+.booking_pagination_wrapper .booking_pagination ul li a:hover,
+.booking_pagination_wrapper > a:hover {
+    background: #2271b1;
+    border-color: #2271b1;
+    color: #fff;
+}

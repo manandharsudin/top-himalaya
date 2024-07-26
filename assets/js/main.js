@@ -576,4 +576,74 @@
         }, 500);
     });
 
+    $('#booking_form').on('submit', function (e) {
+        e.preventDefault();
+        if ($(this).valid()) {
+            var form = $(this);
+            var data = form.serialize();
+            var errors = form.find('.errors');
+            $.post(th_data.ajaxurl, {
+                action: 'booking_form',
+                data: data,                
+            }, function (result) {
+                console.log( result );
+                errors.removeClass('alert-danger');
+                if (result.success) {
+                    errors.addClass('alert-success');                    
+                } else {
+                    errors.addClass('alert-danger');
+                }
+                errors.html(result.data);
+            });
+        }
+    }).validate({
+        ignore: "not:hidden",
+        rules: {
+            full_name: {
+                required: true,
+                minlength: 2,
+            },
+            email: {
+                required: true,
+            },
+            nationality: {
+                required: true,
+            },
+            contact_no: {
+                required: true,
+                number :true
+            },
+            emergency_contact: {
+                required: true,
+                number :true
+            },
+            relationship: {
+                required: true,
+            },
+            medical_issue: {
+                required: true,
+            },
+            // pp_size_photo: {
+            //     required: true,
+            // },
+            // passport: {
+            //     required: true,
+            // },
+            // travel_insurance: {
+            //     required: true,
+            // },
+            // passport_no: {
+            //     required: true,
+            // },
+            // arrival_date: {
+            //     required: true,
+            // },
+            // departure_date: {
+            //     required: true,
+            // },
+            // your_message: {
+            //     required: true,
+            // },
+        }
+    });
 }( jQuery ) );

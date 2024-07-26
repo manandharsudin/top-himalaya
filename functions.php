@@ -148,7 +148,7 @@ function top_himalaya_scripts() {
 
     if( is_page_template( 'templates/booking.php' ) ){
         wp_enqueue_style( 'top-himalaya-nice-select', get_template_directory_uri() . '/assets/css/nice-select.css', array(), TOP_HIMALAYA_VERSION );
-        wp_enqueue_script( 'top-himalaya-nice-select', get_template_directory_uri() . '/assets/js/jquery.nice-select.js', array(), TOP_HIMALAYA_VERSION, true );
+        wp_enqueue_script( 'top-himalaya-nice-select', get_template_directory_uri() . '/assets/js/jquery.nice-select.js', array(), TOP_HIMALAYA_VERSION, true );        
     }
 
 	wp_enqueue_script( 'tailwind', get_template_directory_uri() . '/assets/js/tailwind.js', array(), TOP_HIMALAYA_VERSION, true );
@@ -158,6 +158,7 @@ function top_himalaya_scripts() {
     wp_enqueue_script( 'slick', get_template_directory_uri() . '/assets/js/slick.min.js', array(), TOP_HIMALAYA_VERSION, true );
     wp_enqueue_script( 'iscroll', get_template_directory_uri() . '/assets/js/iscroll.min.js', array(), TOP_HIMALAYA_VERSION, true );
     wp_enqueue_script( 'top-himalaya-megamenu', get_template_directory_uri() . '/assets/js/megamenu.js', array(), TOP_HIMALAYA_VERSION, true );
+    wp_enqueue_script( 'validate', get_template_directory_uri() . '/assets/js/validate.min.js', array(), '1.17.0', true );
     wp_enqueue_script( 'top-himalaya-main', get_template_directory_uri() . '/assets/js/main.js', array(), TOP_HIMALAYA_VERSION, true );
 
     $array = array(
@@ -191,6 +192,11 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
 */
 require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Booking Table
+*/
+require get_template_directory() . '/inc/class_booking_detail.php';
 
 if( is_acf_active() ){
     require get_template_directory() . '/inc/acf.php';

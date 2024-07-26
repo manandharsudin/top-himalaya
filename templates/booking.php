@@ -59,7 +59,7 @@ get_header();
                                     </div>
 
                                     <div class="w-full sm:flex-1 form-groups">
-                                        <select name="relathioship">
+                                        <select name="relationship">
                                             <option value="" data-display="Relationship">Relationship</option>
                                             <?php 
                                                 if( $relationship ){
@@ -82,7 +82,7 @@ get_header();
                                         <div class="flex items-center gap-2">
                                             <label for="adult">Adult</label> 
                                             <div class="flex items-center relative">
-                                                <input name="adult" id="adult" class="qty-number w-26 py-3 px-6 bg-basewhite rounded-none border border-neutral-500 outline-none focus:border-primary text-neutral-800" type="number" min="1" max="999" value="1" />
+                                                <input name="adult" id="adult" class="qty-number w-26 py-3 px-6 bg-basewhite rounded-none border border-neutral-500 outline-none focus:border-primary text-neutral-800" type="number" min="0" max="999" value="1" />
                                                 <div class="flex flex-col justify-center text-center absolute w-12 h-6 right-1 top-1/2 -translate-y-1/2 bg-basewhite">
                                                     <div class="qty-increase value-button h-3 flex items-center justify-center hover:text-primary" ><span class="icon-chevron-up"></span></div>
                                                     <div class="qty-decrease value-button h-3 flex items-center justify-center hover:text-primary"><span class="icon-chevron-down"></span></div>
@@ -95,7 +95,7 @@ get_header();
                                         <div class="flex items-center gap-2">
                                             <label for="child">Child</label> 
                                             <div class="flex items-center relative">
-                                                <input name="child" id="child" class="qty-number w-26 py-3 px-6 bg-basewhite rounded-none border border-neutral-500 outline-none focus:border-primary text-neutral-800" type="number" min="1" max="999" value="1" />
+                                                <input name="child" id="child" class="qty-number w-26 py-3 px-6 bg-basewhite rounded-none border border-neutral-500 outline-none focus:border-primary text-neutral-800" type="number" min="0" max="999" value="1" />
                                                 <div class="flex flex-col justify-center text-center absolute w-12 h-6 right-1 top-1/2 -translate-y-1/2 bg-basewhite">
                                                     <div class="qty-increase value-button h-3 flex items-center justify-center hover:text-primary" ><span class="icon-chevron-up"></span></div>
                                                     <div class="qty-decrease value-button h-3 flex items-center justify-center hover:text-primary"><span class="icon-chevron-down"></span></div>
@@ -108,7 +108,7 @@ get_header();
                                         <div class="flex items-center gap-2">
                                             <label for="infant">Infant</label> 
                                             <div class="flex items-center relative">
-                                                <input name="infant" id="infant" class="qty-number w-26 py-3 px-6 bg-basewhite rounded-none border border-neutral-500 outline-none focus:border-primary text-neutral-800" type="number" min="1" max="999" value="1" />
+                                                <input name="infant" id="infant" class="qty-number w-26 py-3 px-6 bg-basewhite rounded-none border border-neutral-500 outline-none focus:border-primary text-neutral-800" type="number" min="0" max="999" value="1" />
                                                 <div class="flex flex-col justify-center text-center absolute w-12 h-6 right-1 top-1/2 -translate-y-1/2 bg-basewhite">
                                                     <div class="qty-increase value-button h-3 flex items-center justify-center hover:text-primary" ><span class="icon-chevron-up"></span></div>
                                                     <div class="qty-decrease value-button h-3 flex items-center justify-center hover:text-primary"><span class="icon-chevron-down"></span></div>
@@ -130,7 +130,7 @@ get_header();
                                 <div class="flex items-center w-full gap-4">
                                     <span class="inline-block">Are you vegetarian?</span>
                                     <label for="toggle-1" class="flex items-center cursor-pointer">
-                                        <input type="checkbox" name="are_you_vegeterain" id="toggle-1" class="sr-only peer toggle-checkbox">
+                                        <input type="checkbox" name="are_you_vegeterain" value="1" id="toggle-1" class="sr-only peer toggle-checkbox">
                                         <div class="toggle-btn block relative bg-neutral-200 w-11 h-6 p-0.5 rounded-full before:absolute before:bg-basewhite before:w-5 before:h-5 before:p-0.5 before:rounded-full before:transition-all before:duration-500 before:left-0.5 peer-checked:before:left-[22px] peer-checked:before:bg-primary"></div>
                                     </label>
                                 </div>
@@ -138,7 +138,7 @@ get_header();
                                 <div class="flex items-center w-full gap-4">
                                     <span class="inline-block">Are you married?</span>
                                         <label for="toggle-2" class="flex items-center cursor-pointer">
-                                        <input type="checkbox" name="are_you_married" id="toggle-2" class="sr-only peer toggle-checkbox" checked>
+                                        <input type="checkbox" name="are_you_married" value="1" id="toggle-2" class="sr-only peer toggle-checkbox" checked>
                                         <div class="toggle-btn block relative bg-neutral-200 w-11 h-6 p-0.5 rounded-full before:absolute before:bg-basewhite before:w-5 before:h-5 before:p-0.5 before:rounded-full before:transition-all before:duration-500 before:left-0.5 peer-checked:before:left-[22px] peer-checked:before:bg-primary"></div>
                                     </label>
                                 </div>
