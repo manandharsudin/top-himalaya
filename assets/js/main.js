@@ -582,6 +582,7 @@
             var form = $(this);
             var data = form.serialize();
             var errors = form.find('.errors');
+            errors.html('').removeClass('alert-success');
             $.post(th_data.ajaxurl, {
                 action: 'booking_form',
                 data: data,                
@@ -589,11 +590,13 @@
                 console.log( result );
                 errors.removeClass('alert-danger');
                 if (result.success) {
-                    errors.addClass('alert-success');                    
+                    errors.addClass('alert-success');
+                    errors.html( result.data );                    
                 } else {
                     errors.addClass('alert-danger');
+                    errors.html( result.data );
                 }
-                errors.html(result.data);
+                form[0].reset();
             });
         }
     }).validate({

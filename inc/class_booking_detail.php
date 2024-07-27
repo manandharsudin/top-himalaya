@@ -171,11 +171,11 @@ class Top_Himalaya_Booking{
                                         <td><?php echo $val->adult; ?></td>
                                         <td><?php echo $val->child; ?></td>
                                         <td><?php echo $val->infant; ?></td>
-                                        <td><?php echo $val->pp_size_photo; ?></td>
-                                        <td><?php echo $val->are_you_vegeterain; ?></td>
-                                        <td><?php echo $val->are_you_married; ?></td>
-                                        <td><?php echo $val->passport; ?></td>
-                                        <td><?php echo $val->travel_insurance; ?></td>
+                                        <td><a href="<?php echo esc_url( $val->pp_size_photo ); ?>" target="_blank"><?php echo $val->pp_size_photo; ?></a></td>
+                                        <td><?php echo ( $val->are_you_vegeterain ) ? 'Yes' : 'No' ; ?></td>
+                                        <td><?php echo ( $val->are_you_married ) ? 'Yes' : 'No'; ?></td>
+                                        <td><a href="<?php echo esc_url( $val->passport ); ?>" target="_blank"><?php echo $val->passport; ?></a></td>
+                                        <td><a href="<?php echo esc_url( $val->travel_insurance ); ?>" target="_blank"><?php echo $val->travel_insurance; ?></a></td>
                                         <td><?php echo $val->passport_no; ?></td>
                                         <td><?php echo $val->arrival_date; ?></td>
                                         <td><?php echo $val->departure_date; ?></td>
@@ -285,7 +285,31 @@ class Top_Himalaya_Booking{
 	public function add_booking( $data ){
 		global $wpdb;
 		
-        $wpdb->insert( $this->table_name, $data );
+        $wpdb->insert( 
+            $this->table_name,
+            array(
+                'full_name'          => sanitize_text_field( $data['full_name'] ),
+                'email'              => sanitize_email( $data['email'] ),
+                'nationality'        => sanitize_text_field( $data['nationality'] ),
+                'contact_no'         => sanitize_text_field( $data['contact_no'] ),
+                'emergency_contact'  => sanitize_text_field( $data['emergency_contact'] ),
+                'relationship'       => sanitize_text_field( $data['relationship'] ),
+                'medical_issue'      => sanitize_text_field( $data['medical_issue'] ),
+                'adult'              => absint( $data['adult'] ),
+                'child'              => absint( $data['child'] ),
+                'infant'             => absint( $data['infant'] ),
+                'pp_size_photo'      => esc_url_raw( $data['pp_size_photo'] ),
+                'are_you_vegeterain' => absint( $data['are_you_vegeterain'] ),
+                'are_you_married'    => absint( $data['are_you_married'] ),
+                'passport'           => esc_url_raw( $data['passport'] ),
+                'travel_insurance'   => esc_url_raw( $data['travel_insurance'] ),
+                'passport_no'        => sanitize_text_field( $data['passport_no'] ),
+                'arrival_date'       => sanitize_text_field( $data['arrival_date'] ),
+                'departure_date'     => sanitize_text_field( $data['departure_date'] ),
+                'your_message'       => wp_kses_post( $data['your_message'] ),
+                'trip'               => sanitize_text_field( $data['trip'] ),
+            )
+        );
 
 		if ( $wpdb->last_error ) {
 			$result = [
@@ -315,27 +339,31 @@ class Top_Himalaya_Booking{
 	        $headers = array('Content-Type: text/html; charset=UTF-8');
             $subject = apply_filters( 'top_himalaya_booking_subject', sprintf( 'Booking for %s', $data['trip'] ) );
 
-            $message = 'Hello,' . "\r\n\r\n";
-            $message .= 'Here is the details of <strong>' . $data['trip'] . '</strong> booking.' . "\r\n\r\n";
-            $message .= 'Full Name: ' . $data['full_name'] . "\r\n\r\n";
-            $message .= 'Email: ' . $data['email'] . "\r\n\r\n";
-            $message .= 'Nationality: ' . $data['nationality'] . "\r\n\r\n";
-            $message .= 'Contact No.: ' . $data['contact_no'] . "\r\n\r\n";
-            $message .= 'Emergency Contact: ' . $data['emergency_contact'] . "\r\n\r\n";
-            $message .= 'Relationship: ' . $data['relationship'] . "\r\n\r\n";
-            $message .= 'Do you have any medical issue? ' . $data['medical_issue'] . "\r\n\r\n";
-            $message .= 'Adult: ' . $data['adult'] . "\r\n\r\n";
-            $message .= 'Child: ' . $data['child'] . "\r\n\r\n";
-            $message .= 'Infant: ' . $data['infant'] . "\r\n\r\n";
-            $message .= 'Passport size photo: ' . $data['pp_size_photo'] . "\r\n\r\n";
-            $message .= 'Are you vegetarian? ' . $data['are_you_vegeterain'] . "\r\n\r\n";
-            $message .= 'Are you married? ' . $data['are_you_married'] . "\r\n\r\n";
-            $message .= 'Passport: ' . $data['passport'] . "\r\n\r\n";
-            $message .= 'Travel Inssurance: ' . $data['travel_insurance'] . "\r\n\r\n";
-            $message .= 'Passport No.: ' . $data['passport_no'] . "\r\n\r\n";
-            $message .= 'Arrival Date: ' . $data['arrival_date'] . "\r\n\r\n";
-            $message .= 'Departure Date: ' . $data['departure_date'] . "\r\n\r\n";
-            $message .= 'Message: ' . wpautop( $data['your_message'] ) . "\r\n\r\n";
+            $message = '<p>Hello,</p>';
+            $message .= '<p>Here is the details of <strong>' . $data['trip'] . '</strong> booking.</p>';
+            $message .= '<p>Full Name: ' . $data['full_name'] . '</p>';
+            $message .= '<p>Email: ' . $data['email'] . '</p>';
+            $message .= '<p>Nationality: ' . $data['nationality'] . '</p>';
+            $message .= '<p>Contact No.: ' . $data['contact_no'] . '</p>';
+            $message .= '<p>Emergency Contact: ' . $data['emergency_contact'] . '</p>';
+            $message .= '<p>Relationship: ' . $data['relationship'] . '</p>';
+            $message .= '<p>Do you have any medical issue? ' . $data['medical_issue'] . '</p>';
+            $message .= '<p>Adult: ' . $data['adult'] . '</p>';
+            $message .= '<p>Child: ' . $data['child'] . '</p>';
+            $message .= '<p>Infant: ' . $data['infant'] . '</p>';
+            $message .= '<p>Passport size photo: ' . $data['pp_size_photo'] . '</p>';
+            $message .= '<p>Are you vegetarian? ';
+            $message .= ( $data['are_you_vegeterain'] ) ? 'Yes' : 'No';
+            $message .= '</p>';
+            $message .= '<p>Are you married? ';
+            $message .= ( $data['are_you_married'] ) ? 'Yes' : 'No';
+            $message .= '</p>';
+            $message .= '<p>Passport: ' . $data['passport'] . '</p>';
+            $message .= '<p>Travel Insurance: ' . $data['travel_insurance'] . '</p>';
+            $message .= '<p>Passport No.: ' . $data['passport_no'] . '</p>';
+            $message .= '<p>Arrival Date: ' . $data['arrival_date'] . '</p>';
+            $message .= '<p>Departure Date: ' . $data['departure_date'] . '</p>';
+            $message .= 'Message: ' . wpautop( wp_kses_post( $data['your_message'] ) );
 
             $body = apply_filters( 'top_himalaya_booking_body', $message );
 

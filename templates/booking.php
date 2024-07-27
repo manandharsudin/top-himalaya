@@ -190,6 +190,7 @@ get_header();
                             <button type="submit" class="mt-10 min-w-50 btn btn-primary border border-primary bg-primary hover:bg-white hover:text-primary text-white py-3 px-6 text-sm uppercase leading[120%] font-bold whitespace-nowrap">Book Now</button>
                         </div>
                         <input type="hidden" name="trip" value="<?php echo ( isset( $_GET['trip_id'] ) ) ? get_the_title( $_GET['trip_id'] ) : ''; ?>">
+                        <div class="errors"></div>
                     </form>
                 </div>
             </div>
